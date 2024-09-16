@@ -45,23 +45,32 @@ docker-compose --version
 ```
 ### Tora Installation
 ```console
-git clone https://github.com/ora-io/tora-docker-compose
-cd tora-docker-compose
-cp .env.example .env
-nano .env
+git clone https://github.com/ora-io/tora-docker-compose && cd tora-docker-compose
+```
+```console
+cp .env.example .env && nano .env
+```
+Edit your info:
+```console
+PRIV_KEY=""
 
-
-screen -S ora
-cd tora-docker-compose
+MAINNET_WSS=""
+MAINNET_HTTP=""
+SEPOLIA_WSS=""
+SEPOLIA_HTTP=""
+```
+* Ctrl X, Y, Enter to save and exit.
+### Start Node
+```console
 sysctl vm.overcommit_memory=1
-docker compose up
-
-
-
+```
+```console
+docker compose up -d
+```
 ## Node Status
 
 - You can check logs using this command
-```bash
+```console
 docker logs ora-tora -f -n 100
 ```
 - If you see something like this, it means, it is working fine
@@ -71,3 +80,6 @@ docker logs ora-tora -f -n 100
 - You can also check via [Sepolia Explorer](https://sepolia.etherscan.io), If you see your wallet address is interacting with this contract `0x0A0f4321214BB6C7811dD8a71cF587bdaF03f0A0` , it means it is good
 
 ![image](https://github.com/user-attachments/assets/c256b783-8786-4123-8931-a85051e646db)
+
+
+
